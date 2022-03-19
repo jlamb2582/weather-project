@@ -15,6 +15,7 @@ export default function App() {
   };
 
   return (
+    <div className = "container">
     <div className="box">
       <div className="Weather">
         <div>
@@ -72,6 +73,10 @@ export default function App() {
           </div>
         </div>
       </div>
+    </div>
+    <div>
+          <a href = "https://github.com/jlamb2582/weather-project" target ="_blank" rel="noreferrer"> Open-source code</a>, by Jessica Lamb
+          </div>
     </div>
   );
 }
