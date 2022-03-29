@@ -12,8 +12,10 @@ function handleResponse(response) {
 setWeatherData ({
 temperature: response.data.main.temp,
 humidity: response.data.main.humidity,
+description: response.data.weather[0].description,
+iconUrl: "https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png",
 wind: response.data.wind.speed, 
-city: response.date.name
+city: response.data.name,
 });
 
 setReady(true);
@@ -40,7 +42,7 @@ if (ready) {
     <div className = "row mt-3">
         <div className ="col-6">
             <div className = "clearfix">
-        <img src ="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt ="Mostly Cloudy" />
+        <img src = {weatherData.iconUrl} alt ={weatherData.description} />
      
       <span className ="temperature">
        {Math.round(weatherData.temperature)}
