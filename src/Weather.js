@@ -5,23 +5,22 @@ import "./App.css";
 import axios from "axios";
 
 
-export default function Weather () {
-const [ready, setReady] = useState(false);
-const [weatherData, setWeatherData] = useState({});
+export default function Weather(props) {
+const [weatherData, setWeatherData] = useState({ready: false});
 function handleResponse(response) {
 setWeatherData ({
+ready: true,
 temperature: response.data.main.temp,
 humidity: response.data.main.humidity,
+date: "Wednesday 7:00",
 description: response.data.weather[0].description,
 iconUrl: "https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png",
 wind: response.data.wind.speed, 
 city: response.data.name,
 });
-
-setReady(true);
 }
 
-if (ready) {
+if (weatherData.ready) {
     return ( 
     <div className ="Weather">
     <form>
@@ -36,8 +35,8 @@ if (ready) {
     </form>
     <h1>{weatherData.city}</h1> 
     <ul>
-    <li>Wednesday 7:00</li>
-    <li>{weatherData.description}</li>
+    <li>{weatherData.date}</li>
+    <li className="text-capitalize">{weatherData.description}</li>
     </ul>
     <div className = "row mt-3">
         <div className ="col-6">
@@ -62,8 +61,7 @@ if (ready) {
     );
 } else {
     const apiKey = "52497c6b69bb4648be92f1f0807d9c4d";
-    let city = "New York";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 
     return "Loading";
