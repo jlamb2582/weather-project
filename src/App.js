@@ -9,7 +9,14 @@ export default function App() {
   <Weather defaultCity ="New York" />
   <footer className="footer">
     This project was coded by Jessica Lamb and is {""}
-  <a href = "https://github.com/jlamb2582/weather-project" target ="_blank" rel="noreferrer"> open-sourced on GitHub</a>
+  <a href = "https://github.com/jlamb2582/weather-project" target ="_blank" rel="noreferrer"> open-sourced on GitHub </a> and{" "}
+          <a
+            href="https://gracious-wescoff-122257.netlify.app/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            hosted on Netlify
+          </a>
   </footer>
   </div>
 }
